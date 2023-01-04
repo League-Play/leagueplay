@@ -4,7 +4,7 @@ import Image from 'next/image'
 const CardContainer: FunctionComponent = () => (
     <div className="flex flex-col">
         <a className="flex justify-center p-8" href={"signup?tournament_id=1"}>
-            <div className="flex flex-col w-full bg-white rounded shadow-lg sm:w-3/4 md:w-1/2 lg:w-3/5">
+            <div className="flex flex-col w-full bg-white rounded shadow-lg sm:w-3/4 md:w-1/2 lg:w-3/5 hover:bg-gray-100">
                 <div className="w-full h-64 bg-top bg-cover rounded-t bg-[url('https://cdn.discordapp.com/attachments/835404318655119390/1059949125682081873/People.png')]">
                 </div>
                 <div className="flex flex-col w-full md:flex-row">
@@ -45,7 +45,7 @@ const CardContainer: FunctionComponent = () => (
             </div>
         </a>
         <a className="flex justify-center p-8" href={"signup?tournament_id=2"}>
-            <div className="flex flex-col w-full bg-white rounded shadow-lg sm:w-3/4 md:w-1/2 lg:w-3/5">
+            <div className="flex flex-col w-full bg-white rounded shadow-lg sm:w-3/4 md:w-1/2 lg:w-3/5 hover:bg-gray-100">
                 <div className="w-full h-64 bg-top bg-cover rounded-t bg-[url('https://cdn.discordapp.com/attachments/835404318655119390/1059949125682081873/People.png')]">
                 </div>
                 <div className="flex flex-col w-full md:flex-row">

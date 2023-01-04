@@ -6,7 +6,7 @@ type Teammate = {
 }
 
 type FormData = {
-    firstName: string | undefined,
+    firstName: string,
     lastName: string,
     email: string,
     phoneNumber: string,
@@ -16,15 +16,66 @@ type FormData = {
 
 const Form: FunctionComponent = () => {
     const [formData, setFormData] = useState<FormData>({
-        firstName: undefined,
+        firstName: "",
         lastName: "",
         email: "",
         phoneNumber: "",
         team: "",
         teammates: [],
     })
+    const [formTouched, setFormTouched] = useState({
+        firstName: false,
+        lastName: false,
+        email: false,
+        phoneNumber: false,
+        team: false,
+        teammates: [{
+            firstName: false,
+            lastName: false
+        },
+        {
+            firstName: false,
+            lastName: false
+        },
+        {
+            firstName: false,
+            lastName: false
+        },
+        {
+            firstName: false,
+            lastName: false
+        },
+        ],
+    })
+    const handleTouched = (event: any) => {
+        console.log("handle Touched")
+        if (event.target.name.includes("fName") || event.target.name.includes("lName")) {
+            const player = event.target.name;
+            const index = parseInt(player.charAt(player.length - 1));
+            const newTeammates = [...formTouched.teammates];
+            if (player.includes("fName")) {
+                if (formData.teammates[index].firstName.length == 0) {
+                    newTeammates[index].firstName = true;
+                } else {
+                    newTeammates[index].firstName = false;
+                }
+            } else {
+                if (formData.teammates[index].lastName.length == 0) {
+                    newTeammates[index].lastName = true;
+                } else {
+                    newTeammates[index].lastName = false;
+                }
+            }
+            setFormTouched({ ...formTouched, teammates: newTeammates })
+        } else {
+            if (formData[event.target.name as keyof FormData].length == 0) {
+                setFormTouched({ ...formTouched, [event.target.name]: true });
+            } else {
+                setFormTouched({ ...formTouched, [event.target.name]: false });
+            }
+        }
+    }
     const handleChange = (event: any) => {
-        console.log(event);
         if (event.target.name.includes("fName") || event.target.name.includes("lName")) {
             const player = event.target.name;
             const index = parseInt(player.charAt(player.length - 1));
@@ -61,6 +112,25 @@ const Form: FunctionComponent = () => {
         const newTeammates = [...formData.teammates];
         newTeammates.splice(index, 1);
         setFormData({ ...formData, teammates: newTeammates })
+        setFormTouched({
+            ...formTouched, teammates: [{
+                firstName: false,
+                lastName: false
+            },
+            {
+                firstName: false,
+                lastName: false
+            },
+            {
+                firstName: false,
+                lastName: false
+            },
+            {
+                firstName: false,
+                lastName: false
+            },
+            ]
+        })
     }
     const renderTeammates = () => {
         return formData.teammates.map((teamMember, index) => (
@@ -70,23 +140,26 @@ const Form: FunctionComponent = () => {
                         First Name
                     </label>
                     <input
-                        className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                        className={`appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white ${formTouched.teammates[index].firstName ? "border-red-500" : "border-gray-200"}`}
                         name={`fName${index}`}
                         value={teamMember.firstName}
                         onChange={handleChange}
+                        onBlur={handleTouched}
                         type="text" />
-                    <p className="text-red-500 text-xs italic">Please fill out this field.</p>
+                    <p className={`text-red-500 text-xs italic ${formTouched.teammates[index].firstName ? "" : "hidden"}`} >Please fill out this field.</p>
                 </div>
                 <div className="w-full px-3">
                     <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="lastName">
                         Last Name
                     </label>
                     <input
-                        className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                        className={`appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white ${formTouched.teammates[index].lastName ? "border-red-500" : "border-gray-200"}`}
                         name={`lName${index}`}
                         value={teamMember.lastName}
                         onChange={handleChange}
+                        onBlur={handleTouched}
                         type="text" />
+                    <p className={`text-red-500 text-xs italic ${formTouched.teammates[index].lastName ? "" : "hidden"}`} >Please fill out this field.</p>
                 </div>
                 <button
                     type="button"
@@ -99,11 +172,11 @@ const Form: FunctionComponent = () => {
                         width="24"
                         height="24"
                         viewBox="0 0 24 24"
-                        stroke-width="2"
+                        strokeWidth="2"
                         stroke="currentColor"
                         fill="none"
-                        stroke-linecap="round"
-                        stroke-linejoin="round">
+                        strokeLinecap="round"
+                        strokeLinejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" />  <line x1="5" y1="12" x2="19" y2="12" />
                     </svg>
                     <span className="sr-only">Icon description</span>
@@ -119,24 +192,27 @@ const Form: FunctionComponent = () => {
                         First Name
                     </label>
                     <input
-                        className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                        className={`appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white ${formTouched.firstName ? "border-red-500" : "border-gray-200"}`}
                         name="firstName"
                         value={formData.firstName}
                         onChange={handleChange}
+                        onBlur={handleTouched}
                         type="text" />
-                    <p className="text-red-500 text-xs italic">Please fill out this field.</p>
+                    <p className={`text-red-500 text-xs italic ${formTouched.firstName ? "" : "hidden"}`} >Please fill out this field.</p>
                 </div>
                 <div className="w-full md:w-1/2 px-3">
                     <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="lastName">
                         Last Name
                     </label>
                     <input
-                        className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                        className={`appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white ${formTouched.lastName ? "border-red-500" : "border-gray-200"}`}
                         id="lastName"
                         name="lastName"
                         value={formData.lastName}
                         onChange={handleChange}
+                        onBlur={handleTouched}
                         type="text" />
+                    <p className={`text-red-500 text-xs italic ${formTouched.lastName ? "" : "hidden"}`} >Please fill out this field.</p>
                 </div>
             </div>
             <div className="flex flex-wrap -mx-3 mb-6 space-y-3">
@@ -145,24 +221,28 @@ const Form: FunctionComponent = () => {
                         Email
                     </label>
                     <input
-                        className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                        className={`appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white ${formTouched.email ? "border-red-500" : "border-gray-200"}`}
                         id="email"
                         name="email"
                         value={formData.email}
                         onChange={handleChange}
+                        onBlur={handleTouched}
                         type="text" />
+                    <p className={`text-red-500 text-xs italic ${formTouched.email ? "" : "hidden"}`} >Please fill out this field.</p>
                 </div>
                 <div className="w-full px-3">
                     <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="phoneNumber">
                         Phone Number
                     </label>
                     <input
-                        className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                        className={`appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white ${formTouched.phoneNumber ? "border-red-500" : "border-gray-200"}`}
                         id="phoneNumber"
                         name="phoneNumber"
                         value={formData.phoneNumber}
                         onChange={handleChange}
+                        onBlur={handleTouched}
                         type="text" />
+                    <p className={`text-red-500 text-xs italic ${formTouched.phoneNumber ? "" : "hidden"}`} >Please fill out this field.</p>
                 </div>
                 <div className="w-full px-3">
                     <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="teamName">
@@ -174,6 +254,7 @@ const Form: FunctionComponent = () => {
                         name="team"
                         value={formData.team}
                         onChange={handleChange}
+                        onBlur={handleTouched}
                         type="text" />
                 </div>
                 <div className="w-full px-3">
@@ -185,7 +266,7 @@ const Form: FunctionComponent = () => {
                         type="button"
                         className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                         onClick={handleAddTeammate}>
-                        <svg className="h-4 w-4 text-white" width="16" height="16" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z" />  <line x1="12" y1="5" x2="12" y2="19" />  <line x1="5" y1="12" x2="19" y2="12" /></svg>
+                        <svg className="h-4 w-4 text-white" width="16" height="16" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">  <path stroke="none" d="M0 0h24v24H0z" />  <line x1="12" y1="5" x2="12" y2="19" />  <line x1="5" y1="12" x2="19" y2="12" /></svg>
                         <span className="sr-only">Icon description</span>
                     </button>
                 </div>
