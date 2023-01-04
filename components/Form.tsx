@@ -14,6 +14,7 @@ type FormData = {
     email: string,
     phoneNumber: string,
     team: string,
+    referredBy: string,
     teammates: Teammate[],
 }
 
@@ -24,6 +25,7 @@ const Form: FunctionComponent = () => {
         email: "",
         phoneNumber: "",
         team: "",
+        referredBy: "",
         teammates: [],
     })
     const [formTouched, setFormTouched] = useState({
@@ -31,7 +33,6 @@ const Form: FunctionComponent = () => {
         lastName: false,
         email: false,
         phoneNumber: false,
-        team: false,
         teammates: [{
             firstName: false,
             lastName: false
@@ -51,8 +52,6 @@ const Form: FunctionComponent = () => {
         ],
     })
     const handleCheckout = async () => {
-        console.log("handle checkout")
-        console.log(JSON.stringify(formData));
         let allowCheckout = true;
         let newFormTouched = { ...formTouched }
         let newTeammates = [...formTouched.teammates]
@@ -85,8 +84,6 @@ const Form: FunctionComponent = () => {
         if (allowCheckout) {
             const body =
                 JSON.stringify({ quantity: formData.teammates.length + 1, formData: formData })
-            console.log("body");
-            console.log(body);
             const { sessionId } = await fetch('api/checkout/session', {
                 method: 'POST',
                 headers: {
@@ -104,7 +101,6 @@ const Form: FunctionComponent = () => {
         }
     }
     const handleTouched = (event: any) => {
-        console.log("handle Touched")
         if (event.target.name.includes("fName") || event.target.name.includes("lName")) {
             const player = event.target.name;
             const index = parseInt(player.charAt(player.length - 1));
@@ -307,6 +303,19 @@ const Form: FunctionComponent = () => {
                         id="team"
                         name="team"
                         value={formData.team}
+                        onChange={handleChange}
+                        onBlur={handleTouched}
+                        type="text" />
+                </div>
+                <div className="w-full px-3">
+                    <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="referredBy">
+                        Referred By
+                    </label>
+                    <input
+                        className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                        id="referredBy"
+                        name="referredBy"
+                        value={formData.referredBy}
                         onChange={handleChange}
                         onBlur={handleTouched}
                         type="text" />

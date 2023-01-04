@@ -1,7 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 import Stripe from 'stripe';
-console.log(process.env.STRIPE_SECRET_KEY);
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
     apiVersion: '2022-11-15',
 });
@@ -9,7 +8,6 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
 export default async (req: NextApiRequest, res: NextApiResponse) => {
     const formData = req.body;
     const { quantity } = req.body;
-    console.log(formData);
     const session = await stripe.checkout.sessions.create({
         payment_method_types: ['card'],
         line_items: [{
