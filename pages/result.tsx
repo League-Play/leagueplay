@@ -1,10 +1,12 @@
-import {useRouter} from "next/router";
+import { useRouter } from "next/router";
 import useSWR from "swr";
 
 export default function Result() {
     const router = useRouter();
-    const {session_id} = router.query;
-    const {data, error} = useSWR(
+    const { formData } = router.query;
+    console.log("Logging form data: ");
+    console.log(formData);
+    const { data, error } = useSWR(
         router.query.session_id
             ? `api/checkout/${router.query.session_id}`
             : null,
@@ -15,7 +17,7 @@ export default function Result() {
         <div>
             <h1>Payment Result</h1>
             <pre>
-                {data ? JSON.stringify(data, null, 2): 'Loading...'}
+                {data ? JSON.stringify(data, null, 2) : 'Loading...'}
             </pre>
         </div>
     )

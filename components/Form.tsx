@@ -1,4 +1,7 @@
 import React, { FunctionComponent, useState } from 'react'
+import { loadStripe } from '@stripe/stripe-js';
+
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
 
 type Teammate = {
     firstName: string,
@@ -47,6 +50,59 @@ const Form: FunctionComponent = () => {
         },
         ],
     })
+    const handleCheckout = async () => {
+        console.log("handle checkout")
+        console.log(JSON.stringify(formData));
+        let allowCheckout = true;
+        let newFormTouched = { ...formTouched }
+        let newTeammates = [...formTouched.teammates]
+        if (formData.firstName.length == 0) {
+            newFormTouched.firstName = true;
+            allowCheckout = false;
+        }
+        if (formData.lastName.length == 0) {
+            newFormTouched.lastName = true;
+            allowCheckout = false;
+        }
+        if (formData.email.length == 0) {
+            newFormTouched.email = true;
+            allowCheckout = false;
+        }
+        if (formData.phoneNumber.length == 0) {
+            newFormTouched.phoneNumber = true;
+            allowCheckout = false;
+        }
+        for (let teammateInd = 0; teammateInd < formData.teammates.length; teammateInd++) {
+            if (formData.teammates[teammateInd].firstName.length == 0) {
+                newTeammates[teammateInd].firstName = true;
+                allowCheckout = false;
+            }
+            if (formData.teammates[teammateInd].lastName.length == 0) {
+                newTeammates[teammateInd].lastName = true;
+                allowCheckout = false;
+            }
+        }
+        if (allowCheckout) {
+            const body =
+                JSON.stringify({ quantity: formData.teammates.length + 1, formData: formData })
+            console.log("body");
+            console.log(body);
+            const { sessionId } = await fetch('api/checkout/session', {
+                method: 'POST',
+                headers: {
+                    "content-type": "application/json"
+                },
+                body: JSON.stringify({ quantity: formData.teammates.length + 1, formData: formData })
+            }).then(res => res.json())
+            const stripe = await stripePromise;
+            const error = await stripe?.redirectToCheckout({
+                sessionId,
+            })
+        } else {
+            newFormTouched.teammates = newTeammates;
+            setFormTouched(newFormTouched);
+        }
+    }
     const handleTouched = (event: any) => {
         console.log("handle Touched")
         if (event.target.name.includes("fName") || event.target.name.includes("lName")) {
@@ -102,8 +158,6 @@ const Form: FunctionComponent = () => {
                         }
                     ]
             });
-        } else {
-            //Todo
         }
     };
     const handleRemoveTeammate = (event: any) => {
@@ -271,6 +325,9 @@ const Form: FunctionComponent = () => {
                     </button>
                 </div>
             </div>
+            <button role="link" onClick={handleCheckout} type="button" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                Pay and Sign Up
+            </button>
         </form>
     )
 
