@@ -184,7 +184,7 @@ const Form: FunctionComponent = () => {
     }
     const renderTeammates = () => {
         return formData.teammates.map((teamMember, index) => (
-            <div className="flex flex-row -mx-3 mb-6">
+            <div className="flex flex-row -mx-3 mb-6" key={index}>
                 <div className="w-full px-3 mb-6 md:mb-0">
                     <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="firstName">
                         First Name
