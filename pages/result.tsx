@@ -2,10 +2,6 @@ import { useRouter } from "next/router";
 import useSWR from "swr";
 import Header from '../components/Header'
 import Footer from '../components/Footer'
-import prisma from '../lib/prisma';
-import { FormEvent } from "react";
-import { GetStaticProps } from "next";
-
 
 export default function Result() {
     const router = useRouter();
@@ -42,18 +38,6 @@ export default function Result() {
                 <div className="md:text-3xl text-xl font-color-black p-5 grow">
                     If you refer another team, you will receive $10 back at the tournament.
                 </div>
-                {/* <form className="contact-form" onSubmit={sendEmail}>
-                    <input type="hidden" name="contact_number" />
-                    <label>Name</label>
-                    <input type="text" name="from_name" />
-                    <label>Email</label>
-                    <input type="email" name="from_email" />
-                    <label>Subject</label>
-                    <input type="text" name="subject" />
-                    <label>Message</label>
-                    <textarea name="html_message" />
-                    <input type="submit" value="Send" />
-                </form> */}
                 {/* <pre>
                     {data ? JSON.stringify(data, null, 2) : 'Loading...'}
                 </pre> */}

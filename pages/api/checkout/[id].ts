@@ -41,19 +41,21 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         })
         console.log("addFormInfo");
         console.log(addFormInfo);
-        //email the user:
+        //email the user: https://www.denniscampos.com/set-up-nodemailer-with-nextjs-and-typescript/
 
         const transporter = nodemailer.createTransport({
             service: 'SendinBlue',
             auth: {
-                user: 'ericming24@gmail.com', // The account you signed up with SendinBlue
+                user: 'ericming24@gmail.com',
                 pass: process.env.SMTP_PASS,
             },
             secure: false,
         });
+
         const mailData = {
             from: 'support@leagueplaybasketball.com',
             to: formData.email,
+            bcc: ['ericming24@gmail.com'],
             subject: "League Play Baskeball Signup Confirmation",
             text: `${JSON.stringify(formData)}}`,
             html: `<div>${JSON.stringify(formData)}</div><p>Sent from League Play</p>`,
