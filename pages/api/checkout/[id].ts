@@ -55,7 +55,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         const mailData = {
             from: 'support@leagueplaybasketball.com',
             to: formData.email,
-            bcc: ['ericming24@gmail.com'],
+            bcc: ['ericming24@gmail.com', 'dkhait1@gmail.com'],
             subject: "League Play Baskeball Signup Confirmation",
             text: `${JSON.stringify(formData)}}`,
             html: `<div>${JSON.stringify(formData)}</div><p>Sent from League Play</p>`,
