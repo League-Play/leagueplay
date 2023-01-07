@@ -1,5 +1,4 @@
 import React, { FunctionComponent } from 'react'
-import Image from 'next/image'
 
 const CardContainer: FunctionComponent = () => (
     <div className="flex flex-col">
@@ -22,7 +21,7 @@ const CardContainer: FunctionComponent = () => (
                             <br />
                             <p className="leading-normal">La Salle Academy: 215 E 6th St, New York, NY 10003</p>
                         </div>
-                        <div className="grid place-items-center p-3 text-indigo-500 w-full border-t border-gray-300">
+                        <div className="grid place-items-center p-3 text-amber-500 w-full border-t border-gray-300">
                             <div className="flex flex-row items-center w-auto text-sm md:text-lg">
                                 <div>
                                     Click here to sign up as a free agent or a team.
@@ -63,7 +62,7 @@ const CardContainer: FunctionComponent = () => (
                             <br />
                             <p className="leading-normal">La Salle Academy: 215 E 6th St, New York, NY 10003</p>
                         </div>
-                        <div className="grid place-items-center p-3 text-indigo-500 w-full border-t border-gray-300">
+                        <div className="grid place-items-center p-3 text-amber-500 w-full border-t border-gray-300">
                             <div className="flex flex-row items-center w-auto text-sm md:text-lg">
                                 <div>
                                     Click here to sign up as a free agent or a team.

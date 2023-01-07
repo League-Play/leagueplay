@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react'
 import Image from 'next/image'
 
 const HomepageHero: FunctionComponent = () => (
-    <div className="relative flex w-full min-h-[50vh]">
+    <div className="relative flex w-full min-h-[70vh]">
         <div className="blur-sm w-full min-h-full overflow-hidden relative z-0">
             <Image
                 src="https://media.discordapp.net/attachments/835404318655119390/1059674004878786681/BasketballHero.jpeg"
