@@ -16,25 +16,25 @@ const SignupContents: FunctionComponent = (props) => {
                         TOURNAMENT SIGNUP
                     </div>
                     <div className="md:text-2 text-2xl py-3 text-white self-center">
-                        January 18th, 2023
+                        January 21st, 2023
                     </div>
                     <div className="md:text-2 text-2xl py-3 text-white self-center">
-Venue: New Heights Youth, Inc., 1561 Bedford Ave, Brooklyn 11225 (two side-by-side full courts)
+                        Venue: New Heights Youth, Inc., 1561 Bedford Ave, Brooklyn 11225 (two side-by-side full courts)
                     </div>
                     <div className="md:text-2 text-2xl py-3 text-white self-center">
-                    Indoor, half-court games to 21, 2’s and 3’s. Games are refereed.
+                        Indoor, half-court games to 21, 2’s and 3’s. Games are refereed.
                     </div>
                     <div className="md:text-2 text-2xl py-3 text-white self-center">
-Swiss Format: 4 Guaranteed Matches 
+                        Swiss Format: 4 Guaranteed Matches
                     </div>
                     <div className="md:text-2 text-2xl py-3 text-white self-center">
-Teams of 4, max 2 subs. If you fill out the form with less than 3 teammates, we will consider you and your friends free agents and fill the team with other players.
+                        Teams of 4, max 2 subs. If you and your teammates are signing up separately, make sure to put the same team name.
                     </div>
                     <div className="md:text-2 text-2xl py-3 text-white self-center">
-Projected Prize: $1000
+                        Projected Prize: $1000
                     </div>
                     <div className="md:text-2 text-2xl py-3 text-white self-center">
-Entry Fee: $25/ Player
+                        Entry Fee: $25/ Player
                     </div>
                 </div>
                 <Form />

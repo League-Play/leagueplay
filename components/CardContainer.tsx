@@ -10,7 +10,7 @@ const CardContainer: FunctionComponent = () => (
                     <div className="flex flex-row justify-around p-4 font-bold leading-none text-gray-800 uppercase bg-gray-400 rounded md:flex-col md:items-center md:justify-center md:w-1/4">
                         <div className="md:text-3xl">Jan</div>
                         <div className="md:text-6xl">21</div>
-                        <div className="md:text-xl">9:00-11:30 pm</div>
+                        <div className="md:text-l 2xl:text-xl">9:00-11:30 pm</div>
                     </div>
                     <div className="font-normal text-gray-800 flex flex-col w-full">
                         <div className="p-4">

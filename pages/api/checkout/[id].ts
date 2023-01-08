@@ -32,7 +32,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
                     create: formData.teammates
                 },
                 teamName: formData.team ? formData.team : "",
-                referredBy: formData.referredBy
+                referredBy: formData.referredBy,
+                full: formData.fullTeam
             },
             include: {
                 teamCaptain: true,
@@ -51,13 +52,14 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
             },
             secure: false,
         });
-
+        let rosterFilled = false
         let teamRoster = `${formData.firstName} ${formData.lastName}`
         for (let teammate of formData.teammates) {
+            rosterFilled = true;
             teamRoster = teamRoster.concat(`, ${teammate.firstName} ${teammate.lastName}`)
         }
         const text = `${formData.firstName} ${formData.lastName},\n
-        This is a confirmation email for the League Play Basketball Tournament on January 21st, 2023. The event will be at New Heights Youth, Inc., 1561 Bedford Ave, Brooklyn 11225 from 9-11:30 PM. Please arrive 15 minutes early, so we can start at 9:00pm. If you arrive late, we may have to start without you, and you will forfeit in the first round. Your team name is ${formData.team} and your team roster is ${teamRoster}. You were referred by ${formData.referredBy.length > 0? formData.referredBy: "no one"}. Thanks for signing up and good luck!
+        This is a confirmation email for the League Play Basketball Tournament on January 21st, 2023. The event will be at New Heights Youth, Inc., 1561 Bedford Ave, Brooklyn 11225 from 9-11:30 PM. Please arrive 15 minutes early, so we can start at 9:00pm. If you arrive late, we may have to start without you, and you will forfeit in the first round. Your team name is ${formData.team} ${rosterFilled ? `and your current team roster is ${teamRoster}` : ""}. You were referred by ${formData.referredBy.length > 0 ? formData.referredBy : "no one"}. Thanks for signing up and good luck!
         \n
         Best,
         League Play Inc. 

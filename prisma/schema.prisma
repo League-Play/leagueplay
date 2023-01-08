@@ -17,6 +17,7 @@ model Team {
   teamName      String
   referredBy    String
   teamCaptainId String
+  full          Boolean
 }
 
 model Teammate {

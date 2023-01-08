@@ -16,9 +16,11 @@ type FormData = {
     team: string,
     referredBy: string,
     teammates: Teammate[],
+    fullTeam: boolean
 }
 
 const Form: FunctionComponent = () => {
+    const [individual, setIndividual] = useState(true);
     const [formData, setFormData] = useState<FormData>({
         firstName: "",
         lastName: "",
@@ -27,6 +29,7 @@ const Form: FunctionComponent = () => {
         team: "",
         referredBy: "",
         teammates: [],
+        fullTeam: false
     })
     const [formTouched, setFormTouched] = useState({
         firstName: false,
@@ -54,6 +57,7 @@ const Form: FunctionComponent = () => {
             lastName: false
         },
         ],
+        fullTeam: false,
     })
     const handleCheckout = async () => {
         let allowCheckout = true;
@@ -124,7 +128,8 @@ const Form: FunctionComponent = () => {
             }
             setFormTouched({ ...formTouched, teammates: newTeammates })
         } else {
-            if (formData[event.target.name as keyof FormData].length == 0) {
+            const key = formData[event.target.name as keyof FormData] as string;
+            if (key.length == 0) {
                 setFormTouched({ ...formTouched, [event.target.name]: true });
             } else {
                 setFormTouched({ ...formTouched, [event.target.name]: false });
@@ -324,7 +329,15 @@ const Form: FunctionComponent = () => {
                         onBlur={handleTouched}
                         type="text" />
                 </div>
-                <div className="w-full px-3">
+                <div className="inline-flex rounded-md shadow-sm px-3" role="group">
+                    <button type="button" onClick={() => { setIndividual(true) }} className="px-4 py-2 text-sm font-medium text-gray-700 bg-transparent border border-gray-900 rounded-l-lg hover:bg-gray-900 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white dark:border-white dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:bg-gray-700">
+                        SIGNING UP AND PAYING FOR MYSELF
+                    </button>
+                    <button type="button" onClick={() => { setIndividual(false) }} className="px-4 py-2 text-sm font-medium text-gray-700 bg-transparent border border-gray-900 rounded-r-md hover:bg-gray-900 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white dark:border-white dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:bg-gray-700">
+                        SIGNING UP AND PAYING FOR A TEAM
+                    </button>
+                </div>
+                <div className={`w-full px-3 ${individual ? "hidden" : ""}`}>
                     <div className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" >
                         Add Teammates (not including yourself)
                     </div>
@@ -337,6 +350,18 @@ const Form: FunctionComponent = () => {
                         <span className="sr-only">Icon description</span>
                     </button>
                 </div>
+            </div>
+            <div className="flex items-start mb-6">
+                <div className="flex items-center h-5">
+                    <input id="terms" type="checkbox" value="" onClick={() => { setFormData({ ...formData, fullTeam: !formData.fullTeam }) }} className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800" required />
+                </div>
+                <label htmlFor="terms" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">I am part of a full team and do not need free agents to fill my team.</label>
+            </div>
+            <div className="flex items-start mb-6">
+                <div className="flex items-center h-5">
+                    <input id="terms" type="checkbox" value="" className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800" required />
+                </div>
+                <label htmlFor="terms" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">I agree with the <a href="https://leagueplaywaiver.tiiny.site/" target="_blank" className="text-blue-600 hover:underline dark:text-blue-500">terms and conditions</a></label>
             </div>
             <button role="link" onClick={handleCheckout} type="button" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                 Pay and Sign Up
