@@ -14,10 +14,10 @@ const HomepageHero: FunctionComponent = () => (
         <div className="absolute grid place-items-center text-white z-0 h-full w-full">
             <div className="flex flex-col items-center">
                 <div className="md:text-7xl text-5xl font-bold text-center mx-16 mb-8">
-                    Continuous Skill Based Matchmaking
+                    Ranked, Competitive Basketball League
                 </div>
                 <div className="md:text-3xl text-xl font-bold pt-2 text-center mx-16">
-                    Join Basketball Tournaments for a $500+ Prize Pool
+                    Join NYC-wide Basketball Tournaments with $1k+ Prize Pools
                 </div>
             </div>
         </div>

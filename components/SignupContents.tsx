@@ -1,7 +1,11 @@
 import React, { FunctionComponent, useState } from 'react'
 import Footer from './Footer'
 import Form from './Form'
-import Image from 'next/image'
+
+
+
+
+
 
 const SignupContents: FunctionComponent = (props) => {
     return (
@@ -11,8 +15,26 @@ const SignupContents: FunctionComponent = (props) => {
                     <div className="md:text-5xl text-2xl pt-6 font-bold text-white self-center">
                         TOURNAMENT SIGNUP
                     </div>
-                    <div className="md:text-2 text-2xl py-3 text-[#d8a690] self-center">
-                        January 18th, 2023 at La Salle Academy
+                    <div className="md:text-2 text-2xl py-3 text-white self-center">
+                        January 18th, 2023
+                    </div>
+                    <div className="md:text-2 text-2xl py-3 text-white self-center">
+Venue: New Heights Youth, Inc., 1561 Bedford Ave, Brooklyn 11225 (two side-by-side full courts)
+                    </div>
+                    <div className="md:text-2 text-2xl py-3 text-white self-center">
+                    Indoor, half-court games to 21, 2’s and 3’s. Games are refereed.
+                    </div>
+                    <div className="md:text-2 text-2xl py-3 text-white self-center">
+Swiss Format: 4 Guaranteed Matches 
+                    </div>
+                    <div className="md:text-2 text-2xl py-3 text-white self-center">
+Teams of 4, max 2 subs. If you fill out the form with less than 3 teammates, we will consider you and your friends free agents and fill the team with other players.
+                    </div>
+                    <div className="md:text-2 text-2xl py-3 text-white self-center">
+Projected Prize: $1000
+                    </div>
+                    <div className="md:text-2 text-2xl py-3 text-white self-center">
+Entry Fee: $25/ Player
                     </div>
                 </div>
                 <Form />

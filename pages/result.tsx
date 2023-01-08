@@ -33,14 +33,14 @@ export default function Result() {
                     Your Payment Was Successful!
                 </div>
                 <div className="md:text-3xl text-xl text-white p-5">
-                    An email confirmation was sent with the event details and your team information. If you have any questions, text me at 201-888-6294.
+                    An email confirmation was sent with the event details and your team information. If you don’t see the email, make sure to check your spam folder. If you have any questions, text me at 201-888-6294.
+                </div>
+                <div className="md:text-3xl text-xl text-white p-5">
+                    For every team you refer, you as an individual will receive $10 back at the tournament. 
                 </div>
                 <div className="md:text-3xl text-xl text-white p-5 grow">
-                    If you refer another team, you will receive $10 back at the tournament.
+                    Ex: If Michael refers 3 teams, Michael will get $30 at the tournament and make $30-$25 = $5.
                 </div>
-                {/* <pre>
-                    {data ? JSON.stringify(data, null, 2) : 'Loading...'}
-                </pre> */}
                 <Footer />
             </div>
         </div>
