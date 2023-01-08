@@ -10,16 +10,18 @@ const CardContainer: FunctionComponent = () => (
                     <div className="flex flex-row justify-around p-4 font-bold leading-none text-gray-800 uppercase bg-gray-400 rounded md:flex-col md:items-center md:justify-center md:w-1/4">
                         <div className="md:text-3xl">Jan</div>
                         <div className="md:text-6xl">21</div>
-                        <div className="md:text-xl">7 pm</div>
+                        <div className="md:text-xl">9:00-11:30 pm</div>
                     </div>
                     <div className="font-normal text-gray-800 flex flex-col w-full">
                         <div className="p-4">
-                            <h1 className="mb-4 text-4xl font-bold leading-none tracking-tight text-gray-800">8-Team 3v3 Tournament </h1>
-                            <p className="leading-normal">Indoor 3v3 Tournament with a $500 prize pool</p>
+                            <h1 className="mb-4 text-4xl font-bold leading-none tracking-tight text-gray-800">16-Team 4v4 Tournament </h1>
+                            <p className="leading-normal">Indoor 4v4 Tournament with a projected $1000 prize pool</p>
                             <br />
-                            <p className="leading-normal">Buy In: $30 per player</p>
+                            <p className="leading-normal">Buy In: $25 per player</p>
                             <br />
-                            <p className="leading-normal">La Salle Academy: 215 E 6th St, New York, NY 10003</p>
+                            <p className="leading-normal">Teams of 4, max 2 subs. Free agents welcome.</p>
+                            <br />
+                            <p className="leading-normal">New Heights Youth, 1561 Bedford Ave, Brooklyn 11225</p>
                         </div>
                         <div className="grid place-items-center p-3 text-amber-500 w-full border-t border-gray-300">
                             <div className="flex flex-row items-center w-auto text-sm md:text-lg">
