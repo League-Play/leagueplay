@@ -21,6 +21,7 @@ type FormData = {
 
 const Form: FunctionComponent = () => {
     const [individual, setIndividual] = useState(true);
+    const [checkedTerms, setCheckedTerms] = useState(false);
     const [formData, setFormData] = useState<FormData>({
         firstName: "",
         lastName: "",
@@ -88,6 +89,9 @@ const Form: FunctionComponent = () => {
                 newTeammates[teammateInd].lastName = true;
                 allowCheckout = false;
             }
+        }
+        if (!checkedTerms) {
+            allowCheckout = false;
         }
         if (allowCheckout) {
             const body =
@@ -353,19 +357,20 @@ const Form: FunctionComponent = () => {
             </div>
             <div className="flex items-start mb-6">
                 <div className="flex items-center h-5">
-                    <input id="terms" type="checkbox" value="" onClick={() => { setFormData({ ...formData, fullTeam: !formData.fullTeam }) }} className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 " required />
+                    <input id="fullTeam" type="checkbox" value="" onClick={() => { setFormData({ ...formData, fullTeam: !formData.fullTeam }) }} className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 " required />
                 </div>
-                <label htmlFor="terms" className="ml-2 text-sm font-medium text-gray-900 ">I am part of a full team and do not need free agents to fill my team.</label>
+                <label htmlFor="fullTeam" className="ml-2 text-sm font-medium text-gray-900 ">I am part of a full team and do not need free agents to fill my team.</label>
             </div>
             <div className="flex items-start mb-6">
                 <div className="flex items-center h-5">
-                    <input id="terms" type="checkbox" value="" className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 " required />
+                    <input id="terms" type="checkbox" value="" onClick={() => { setCheckedTerms(!checkedTerms) }} className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 " />
                 </div>
                 <label htmlFor="terms" className="ml-2 text-sm font-medium text-gray-900 ">I agree with the <a href="https://leagueplaywaiver.tiiny.site/" target="_blank" rel="noreferrer" className="text-blue-600 hover:underline">terms and conditions</a></label>
             </div>
             <button role="link" onClick={handleCheckout} type="button" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center mr-2">
                 Pay and Sign Up
             </button>
+            <p className={`text-red-500 pt-1 text-xs italic ${!checkedTerms ? "" : "hidden"}`} >Please agree to the terms of service.</p>
         </form>
     )
 

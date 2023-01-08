@@ -2,16 +2,11 @@ import React, { FunctionComponent, useState } from 'react'
 import Footer from './Footer'
 import Form from './Form'
 
-
-
-
-
-
 const SignupContents: FunctionComponent = (props) => {
     return (
         <div className="flex flex-col mx-auto min-h-screen bg-[url('https://cdn.discordapp.com/attachments/835404318655119390/1061103104331874408/wp6994803.webp')] w-full">
             <div className="flex flex-col md:flex-row p-5 grow">
-                <div className="grow">
+                <div className="grow pr-3">
                     <div className="md:text-5xl text-2xl pt-6 font-bold text-white self-center">
                         TOURNAMENT SIGNUP
                     </div>
