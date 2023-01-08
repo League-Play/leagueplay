@@ -223,7 +223,7 @@ const Form: FunctionComponent = () => {
                 <button
                     type="button"
                     id={`button${index}`}
-                    className="self-center h-8 w-8 text-white bg-red-200 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center mr-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800"
+                    className="self-center h-8 w-8 text-white bg-red-200 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center mr-2 "
                     onClick={handleRemoveTeammate}>
                     <svg
                         id={`button${index}`}
@@ -330,10 +330,10 @@ const Form: FunctionComponent = () => {
                         type="text" />
                 </div>
                 <div className="inline-flex rounded-md shadow-sm px-3" role="group">
-                    <button type="button" onClick={() => { setIndividual(true) }} className="px-4 py-2 text-sm font-medium text-gray-700 bg-transparent border border-gray-900 rounded-l-lg hover:bg-gray-900 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white dark:border-white dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:bg-gray-700">
+                    <button type="button" onClick={() => { setIndividual(true) }} className={`px-4 py-2 text-sm font-medium bg-transparent border border-gray-900 rounded-l-lg hover:bg-gray-900 hover:text-white ${individual ? "z-10 ring-2 ring-gray-500 bg-gray-900 text-white" : "text-gray-700 "}`}>
                         SIGNING UP AND PAYING FOR MYSELF
                     </button>
-                    <button type="button" onClick={() => { setIndividual(false) }} className="px-4 py-2 text-sm font-medium text-gray-700 bg-transparent border border-gray-900 rounded-r-md hover:bg-gray-900 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white dark:border-white dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:bg-gray-700">
+                    <button type="button" onClick={() => { setIndividual(false) }} className={`px-4 py-2 text-sm font-medium bg-transparent border border-gray-900 rounded-r-md hover:bg-gray-900 hover:text-white ${!individual ? "z-10 ring-2 ring-gray-500 bg-gray-900 text-white" : "text-gray-700 "}`}>
                         SIGNING UP AND PAYING FOR A TEAM
                     </button>
                 </div>
@@ -344,7 +344,7 @@ const Form: FunctionComponent = () => {
                     {renderTeammates()}
                     <button
                         type="button"
-                        className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                        className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center mr-2"
                         onClick={handleAddTeammate}>
                         <svg className="h-4 w-4 text-white" width="16" height="16" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">  <path stroke="none" d="M0 0h24v24H0z" />  <line x1="12" y1="5" x2="12" y2="19" />  <line x1="5" y1="12" x2="19" y2="12" /></svg>
                         <span className="sr-only">Icon description</span>
@@ -353,17 +353,17 @@ const Form: FunctionComponent = () => {
             </div>
             <div className="flex items-start mb-6">
                 <div className="flex items-center h-5">
-                    <input id="terms" type="checkbox" value="" onClick={() => { setFormData({ ...formData, fullTeam: !formData.fullTeam }) }} className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800" required />
+                    <input id="terms" type="checkbox" value="" onClick={() => { setFormData({ ...formData, fullTeam: !formData.fullTeam }) }} className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 " required />
                 </div>
-                <label htmlFor="terms" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">I am part of a full team and do not need free agents to fill my team.</label>
+                <label htmlFor="terms" className="ml-2 text-sm font-medium text-gray-900 ">I am part of a full team and do not need free agents to fill my team.</label>
             </div>
             <div className="flex items-start mb-6">
                 <div className="flex items-center h-5">
-                    <input id="terms" type="checkbox" value="" className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800" required />
+                    <input id="terms" type="checkbox" value="" className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 " required />
                 </div>
-                <label htmlFor="terms" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">I agree with the <a href="https://leagueplaywaiver.tiiny.site/" target="_blank" rel="noreferrer" className="text-blue-600 hover:underline dark:text-blue-500">terms and conditions</a></label>
+                <label htmlFor="terms" className="ml-2 text-sm font-medium text-gray-900 ">I agree with the <a href="https://leagueplaywaiver.tiiny.site/" target="_blank" rel="noreferrer" className="text-blue-600 hover:underline">terms and conditions</a></label>
             </div>
-            <button role="link" onClick={handleCheckout} type="button" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+            <button role="link" onClick={handleCheckout} type="button" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center mr-2">
                 Pay and Sign Up
             </button>
         </form>
