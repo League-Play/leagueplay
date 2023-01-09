@@ -365,7 +365,7 @@ const Form: FunctionComponent = () => {
                 <div className="flex items-center h-5">
                     <input id="terms" type="checkbox" value="" onClick={() => { setCheckedTerms(!checkedTerms) }} className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 " />
                 </div>
-                <label htmlFor="terms" className="ml-2 text-sm font-medium text-gray-900 ">I agree with the <a href="https://leagueplaywaiver.tiiny.site/" target="_blank" rel="noreferrer" className="text-blue-600 hover:underline">terms and conditions</a></label>
+                <label htmlFor="terms" className="ml-2 text-sm font-medium text-gray-900 ">I am at least 18 years old and agree with the <a href="https://leagueplaywaiver.tiiny.site/" target="_blank" rel="noreferrer" className="text-blue-600 hover:underline">terms and conditions</a></label>
             </div>
             <button role="link" onClick={handleCheckout} type="button" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center mr-2">
                 Pay and Sign Up

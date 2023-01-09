@@ -69,7 +69,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
             from: 'support@leagueplaybasketball.com',
             to: formData.email,
             bcc: ['ericming24@gmail.com', 'dkhait1@gmail.com'],
-            subject: "League Play Baskeball Signup Confirmation",
+            subject: "League Play Basketball Signup Confirmation",
             text: text,
         };
 
