@@ -14,7 +14,7 @@ const SignupContents: FunctionComponent = (props) => {
                         January 21st, 2023
                     </div>
                     <div className="md:text-2 text-2xl py-3 text-white self-center">
-                        Venue: New Heights Youth, Inc., 1561 Bedford Ave, Brooklyn 11225 (two side-by-side full courts)
+                        Venue: Major R. Owens Center, 1561 Bedford Ave, Brooklyn 11225 (two side-by-side full courts)
                     </div>
                     <div className="md:text-2 text-2xl py-3 text-white self-center">
                         Indoor, half-court games to 21, 2’s and 3’s. Games are refereed.

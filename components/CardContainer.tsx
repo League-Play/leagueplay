@@ -21,7 +21,7 @@ const CardContainer: FunctionComponent = () => (
                             <br />
                             <p className="leading-normal">Teams of 4, max 2 subs. Free agents welcome.</p>
                             <br />
-                            <p className="leading-normal">New Heights Youth, 1561 Bedford Ave, Brooklyn 11225</p>
+                            <p className="leading-normal">Major R. Owens Center, 1561 Bedford Ave, Brooklyn 11225</p>
                         </div>
                         <div className="grid place-items-center p-3 text-amber-500 w-full border-t border-gray-300">
                             <div className="flex flex-row items-center w-auto text-sm md:text-lg">
