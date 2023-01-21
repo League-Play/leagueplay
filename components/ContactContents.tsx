@@ -176,7 +176,7 @@ const ContactContents: FunctionComponent = () => {
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d96708.15276825594!2d-74.03927100207287!3d40.75917036011424!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c2588f046ee661%3A0xa0b3281fcecc08c!2sManhattan%2C%20New%20York%2C%20NY!5e0!3m2!1sen!2sus!4v1673056687844!5m2!1sen!2sus"
                     ></iframe>
                     <div className="relative flex flex-wrap py-6 bg-white rounded shadow-md">
-                        <div className="px-6 lg:w-1/2">
+                        <div className="px-6">
                             <h2 className="text-xs font-semibold tracking-widest text-gray-900 title-font">
                                 INSTAGRAM
                             </h2>
