@@ -189,12 +189,12 @@ const ContactContents: FunctionComponent = () => {
                                 EMAIL
                             </h2>
                             <a className="leading-relaxed text-amber-500">
-                                eming6@gatech.edu
+                                support@leagueplaybasketball.com
                             </a>
                             <h2 className="mt-4 text-xs font-semibold tracking-widest text-gray-900 title-font">
                                 PHONE
                             </h2>
-                            <p className="leading-relaxed">201-407-6376</p>
+                            <p className="leading-relaxed">201-888-6294</p>
                         </div>
                     </div>
                 </div>
