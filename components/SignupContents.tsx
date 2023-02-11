@@ -1,8 +1,11 @@
 import React, { FunctionComponent, useState } from 'react'
 import Footer from './Footer'
 import Form from './Form'
+import { useRouter } from "next/router";
 
 const SignupContents: FunctionComponent = (props) => {
+    const router = useRouter();
+
     return (
         <div className="flex flex-col mx-auto min-h-screen bg-[url('https://cdn.discordapp.com/attachments/835404318655119390/1061103104331874408/wp6994803.webp')] w-full">
             <div className="flex flex-col md:flex-row p-5 grow">
@@ -32,7 +35,9 @@ const SignupContents: FunctionComponent = (props) => {
                         Entry Fee: $25/ Player
                     </div>
                 </div>
-                <Form />
+                <Form
+                    tournament_id={router.query.tournament_id ? +router.query.tournament_id : 1}
+                />
             </div>
             <Footer />
         </div>
