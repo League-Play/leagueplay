@@ -10,13 +10,10 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     const { quantity } = req.body;
     const { tournament_id } = req.body
     let productId: string | undefined = "";
-    console.log("tournament_id: ");
-    console.log(typeof (tournament_id));
-    console.log(tournament_id);
     switch (tournament_id) {
         case 1:
             productId = process.env.PRICE_ID1;
-            break
+            break;
         case 2:
             productId = process.env.PRICE_ID2;
             break;
@@ -24,7 +21,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
             productId = process.env.PRICE_ID3;
             break;
     }
-    console.log(productId);
     const session = await stripe.checkout.sessions.create({
         payment_method_types: ['card'],
         line_items: [{

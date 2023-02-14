@@ -34,7 +34,7 @@ const Form: FunctionComponent<FormProps> = (props) => {
         team: "",
         referredBy: "",
         teammates: [],
-        fullTeam: false
+        fullTeam: false,
     })
     const [formTouched, setFormTouched] = useState({
         firstName: false,

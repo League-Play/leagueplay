@@ -5,6 +5,31 @@ import { useRouter } from "next/router";
 
 const SignupContents: FunctionComponent = (props) => {
     const router = useRouter();
+    const tournament_id = router.query.tournament_id;
+    let date = "";
+    let location = ""
+    let format = ""
+    let teammates = ""
+    let fee = ""
+    if (tournament_id == "1") {
+        date = "February 25th, 2023, 5:30pm - 8:00pm";
+        location = "Venue: Major R. Owens Center, 1561 Bedford Ave, Brooklyn 11225"
+        format = "6-Team Round Robin, 5 Guaranteed Matches"
+        teammates = "Teams of 4 mandatory. If you and your teammates are signing up separately, make sure to put the same team name."
+        fee = "Entry Fee: $30/player"
+    } else if (tournament_id == "2") {
+        date = "March 4th, 2023, 5:30pm - 8:00pm";
+        location = "Venue: Major R. Owens Center, 1561 Bedford Ave, Brooklyn 11225"
+        format = "8-Team Double Elimination"
+        teammates = "Teams of 4 mandatory. If you and your teammates are signing up separately, make sure to put the same team name."
+        fee = "Entry Fee: $30/player"
+    } else if (tournament_id == "3") {
+        date = "February 25th, 2023, 12:00pm - 3:00pm";
+        location = "Venue: Campus Recreation Center, 750 Ferst Drive Atlanta, GA 30332"
+        format = "8-Team Double Elimination"
+        teammates = "Teams of 3, max 2 subs. If you and your teammates are signing up separately, make sure to put the same team name."
+        fee = "Entry Fee: $20/player"
+    }
 
     return (
         <div className="flex flex-col mx-auto min-h-screen bg-[url('https://cdn.discordapp.com/attachments/835404318655119390/1061103104331874408/wp6994803.webp')] w-full">
@@ -14,25 +39,25 @@ const SignupContents: FunctionComponent = (props) => {
                         TOURNAMENT SIGNUP
                     </div>
                     <div className="md:text-2 text-2xl py-3 text-white self-center">
-                        January 21st, 2023
+                        {date}
                     </div>
                     <div className="md:text-2 text-2xl py-3 text-white self-center">
-                        Venue: Major R. Owens Center, 1561 Bedford Ave, Brooklyn 11225 (two side-by-side full courts)
+                        {location}
                     </div>
                     <div className="md:text-2 text-2xl py-3 text-white self-center">
                         Indoor, half-court games to 21, 2’s and 3’s. Games are refereed.
                     </div>
                     <div className="md:text-2 text-2xl py-3 text-white self-center">
-                        Swiss Format: 4 Guaranteed Matches
+                        {format}
                     </div>
                     <div className="md:text-2 text-2xl py-3 text-white self-center">
-                        Teams of 4, max 2 subs. If you and your teammates are signing up separately, make sure to put the same team name.
+                        {teammates}
                     </div>
                     <div className="md:text-2 text-2xl py-3 text-white self-center">
-                        Projected Prize: $1000
+                        Projected Prize: $300
                     </div>
                     <div className="md:text-2 text-2xl py-3 text-white self-center">
-                        Entry Fee: $25/ Player
+                        {fee}
                     </div>
                 </div>
                 <Form
