@@ -31,6 +31,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         metadata: {
             formData: JSON.stringify(formData),
         },
+
         success_url: `${req.headers.origin}/result?session_id={CHECKOUT_SESSION_ID}&tournament_id=${tournament_id}`,
         cancel_url: `${req.headers.origin}/signup?tournament_id=${tournament_id}`
     })
