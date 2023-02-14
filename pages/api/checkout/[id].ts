@@ -16,7 +16,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     if (!feed) {
         //Put the form info in the database and email the user
         const formData = session.metadata ? JSON.parse(session.metadata.formData).formData : "";
-        console.log(formData)
+        const tournament_id = session.metadata ? JSON.parse(session.metadata.formData).tournament_id : "";
         const addFormInfo = await prisma.team.create({
             data: {
                 stripeId: id as string,
@@ -25,7 +25,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
                         firstName: formData.firstName,
                         lastName: formData.lastName,
                         email: formData.email,
-                        phoneNumber: formData.phoneNumber
+                        phoneNumber: formData.phoneNumber,
                     }
                 },
                 teammates: {
@@ -33,7 +33,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
                 },
                 teamName: formData.team ? formData.team : "",
                 referredBy: formData.referredBy,
-                full: formData.fullTeam
+                full: formData.fullTeam,
+                tournament_id: String(tournament_id)
             },
             include: {
                 teamCaptain: true,
@@ -58,8 +59,30 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
             rosterFilled = true;
             teamRoster = teamRoster.concat(`, ${teammate.firstName} ${teammate.lastName}`)
         }
+        let date = "";
+        let location = "";
+        let time = "";
+        let time2 = "";
+
+        if (tournament_id == "1" || tournament_id == 1) {
+            date = "February 25th, 2023";
+            location = "Major R. Owens Center, 1561 Bedford Ave, Brooklyn 11225"
+            time = "5:30-8:00 PM"
+            time2 = "5:30pm"
+        } else if (tournament_id == "2" || tournament_id == 2) {
+            date = "March 4th, 2023";
+            location = "Major R. Owens Center, 1561 Bedford Ave, Brooklyn 11225"
+            time = "5:30-8:00 PM"
+            time2 = "5:30pm"
+        } else if (tournament_id == "3" || tournament_id == 3) {
+            date = "February 25th, 2023";
+            location = "the Campus Recreation Center, 750 Ferst Drive Atlanta, GA 30332"
+            time = "12:00-3:00 PM"
+            time2 = "12:00pm"
+        }
+
         const text = `${formData.firstName} ${formData.lastName},\n
-        This is a confirmation email for the League Play Basketball Tournament on January 21st, 2023. The event will be at Major R. Owens Center, 1561 Bedford Ave, Brooklyn 11225 from 9-11:30 PM. Please arrive 15 minutes early, so we can start at 9:00pm. If you arrive late, we may have to start without you, and you will forfeit in the first round. Your team name is ${formData.team}${rosterFilled ? ` and your current team roster is ${teamRoster}` : ""}. You were referred by ${formData.referredBy.length > 0 ? formData.referredBy : "no one"}. Thanks for signing up and good luck!
+        This is a confirmation email for the League Play Basketball Tournament on ${date}. The event will be at ${location} from ${time}. Please arrive 15 minutes early, so we can start at ${time2}. If you arrive late, we may have to start without you, and you will forfeit in the first round. Your team name is ${formData.team}${rosterFilled ? ` and your current team roster is ${teamRoster}` : ""}. You were referred by ${formData.referredBy.length > 0 ? formData.referredBy : "no one"}. Thanks for signing up and good luck!
         \n
         Best,
         League Play Inc. 

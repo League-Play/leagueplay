@@ -19,7 +19,11 @@ type FormData = {
     fullTeam: boolean
 }
 
-const Form: FunctionComponent = () => {
+interface FormProps {
+    tournament_id: number
+}
+
+const Form: FunctionComponent<FormProps> = (props) => {
     const [individual, setIndividual] = useState(true);
     const [checkedTerms, setCheckedTerms] = useState(false);
     const [formData, setFormData] = useState<FormData>({
@@ -30,7 +34,7 @@ const Form: FunctionComponent = () => {
         team: "",
         referredBy: "",
         teammates: [],
-        fullTeam: false
+        fullTeam: false,
     })
     const [formTouched, setFormTouched] = useState({
         firstName: false,
@@ -101,7 +105,7 @@ const Form: FunctionComponent = () => {
                 headers: {
                     "content-type": "application/json"
                 },
-                body: JSON.stringify({ quantity: formData.teammates.length + 1, formData: formData })
+                body: JSON.stringify({ tournament_id: props.tournament_id, quantity: formData.teammates.length + 1, formData: formData })
             }).then(res => res.json())
             const stripe = await stripePromise;
             const error = await stripe?.redirectToCheckout({

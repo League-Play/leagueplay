@@ -1,4 +1,3 @@
-import { loadStripe } from '@stripe/stripe-js';
 import Header from '../components/Header'
 import SignupContents from '../components/SignupContents'
 
