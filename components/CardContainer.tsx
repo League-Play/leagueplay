@@ -14,7 +14,7 @@ const CardContainer: FunctionComponent = () => (
                     </div>
                     <div className="font-normal text-gray-800 flex flex-col w-full">
                         <div className="p-4">
-                            <h1 className="mb-4 text-4xl font-bold leading-none tracking-tight text-gray-800">NYC 6-Team 3v3 Tournament </h1>
+                            <h1 className="mb-4 text-4xl font-bold leading-none tracking-tight text-gray-800">NYC 6-Team 3v3 Round-Robin Tournament </h1>
                             <p className="leading-normal">Indoor 3v3 Tournament with a projected $300 prize pool</p>
                             <br />
                             <p className="leading-normal">Buy In: $30 per player</p>
@@ -57,7 +57,7 @@ const CardContainer: FunctionComponent = () => (
                     </div>
                     <div className="font-normal text-gray-800 flex flex-col w-full">
                         <div className="p-4">
-                            <h1 className="mb-4 text-4xl font-bold leading-none tracking-tight text-gray-800">Atlanta 8-Team 3v3 Tournament </h1>
+                            <h1 className="mb-4 text-4xl font-bold leading-none tracking-tight text-gray-800">Atlanta 8-Team 3v3 Double-Elimination Tournament </h1>
                             <p className="leading-normal">Indoor 3v3 Tournament with a projected $300 prize pool</p>
                             <br />
                             <p className="leading-normal">Buy In: $20 per player</p>
@@ -100,7 +100,7 @@ const CardContainer: FunctionComponent = () => (
                     </div>
                     <div className="font-normal text-gray-800 flex flex-col w-full">
                         <div className="p-4">
-                            <h1 className="mb-4 text-4xl font-bold leading-none tracking-tight text-gray-800">NYC 8-Team 3v3 Tournament </h1>
+                            <h1 className="mb-4 text-4xl font-bold leading-none tracking-tight text-gray-800">NYC 8-Team 3v3 Double-Elimination Tournament </h1>
                             <p className="leading-normal">Indoor 3v3 Tournament with a projected $500 prize pool</p>
                             <br />
                             <p className="leading-normal">Buy In: $30 per player</p>
