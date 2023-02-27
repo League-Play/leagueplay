@@ -72,13 +72,18 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         } else if (tournament_id == "2" || tournament_id == 2) {
             date = "March 4th, 2023";
             location = "Major R. Owens Center, 1561 Bedford Ave, Brooklyn 11225"
-            time = "5:30-8:00 PM"
-            time2 = "5:30pm"
+            time = "9:00-11:30 PM"
+            time2 = "9:00pm"
         } else if (tournament_id == "3" || tournament_id == 3) {
             date = "February 25th, 2023";
             location = "the Campus Recreation Center, 750 Ferst Drive Atlanta, GA 30332"
             time = "12:00-3:00 PM"
             time2 = "12:00pm"
+        } else if (tournament_id == "4" || tournament_id == 4) {
+            date = "March 11th, 2023";
+            location = "Major R. Owens Center, 1561 Bedford Ave, Brooklyn 11225"
+            time = "9:00-11:30 PM"
+            time2 = "9:00pm"
         }
 
         const text = `${formData.firstName} ${formData.lastName},\n

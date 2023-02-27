@@ -18,7 +18,7 @@ const SignupContents: FunctionComponent = (props) => {
         teammates = "Teams of 4 mandatory. If you and your teammates are signing up separately, make sure to put the same team name."
         fee = "Entry Fee: $30/player"
     } else if (tournament_id == "2") {
-        date = "March 4th, 2023, 5:30pm - 8:00pm";
+        date = "March 4th, 2023, 9:00pm - 11:30pm";
         location = "Venue: Major R. Owens Center, 1561 Bedford Ave, Brooklyn 11225"
         format = "8-Team Double Elimination"
         teammates = "Teams of 4 mandatory. If you and your teammates are signing up separately, make sure to put the same team name."
@@ -29,6 +29,12 @@ const SignupContents: FunctionComponent = (props) => {
         format = "8-Team Double Elimination"
         teammates = "Teams of 3, max 2 subs. If you and your teammates are signing up separately, make sure to put the same team name."
         fee = "Entry Fee: $20/player"
+    } else if (tournament_id == "4") {
+        date = "March 11th, 2023, 9:00pm - 11:30pm";
+        location = "Venue: Major R. Owens Center, 1561 Bedford Ave, Brooklyn 11225"
+        format = "8-Team Double Elimination"
+        teammates = "Teams of 4 mandatory. If you and your teammates are signing up separately, make sure to put the same team name."
+        fee = "Entry Fee: $30/player"
     }
 
     return (
@@ -54,7 +60,7 @@ const SignupContents: FunctionComponent = (props) => {
                         {teammates}
                     </div>
                     <div className="md:text-2 text-2xl py-3 text-white self-center">
-                        Projected Prize: $300
+                        Projected Prize: $400
                     </div>
                     <div className="md:text-2 text-2xl py-3 text-white self-center">
                         {fee}
