@@ -22,6 +22,10 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
             break;
         case 4:
             productId = process.env.PRICE_ID4;
+            break;
+        case 5:
+            productId = process.env.PRICE_ID5;
+            break;
     }
     const session = await stripe.checkout.sessions.create({
         payment_method_types: ['card'],

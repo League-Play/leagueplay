@@ -35,6 +35,12 @@ const SignupContents: FunctionComponent = (props) => {
         format = "8-Team Double Elimination"
         teammates = "Teams of 4 mandatory. If you and your teammates are signing up separately, make sure to put the same team name."
         fee = "Entry Fee: $30/player"
+    } else if (tournament_id == "5") {
+        date = "March 18, 2023, 9:00pm - 11:30pm";
+        location = "Venue: Major R. Owens Center, 1561 Bedford Ave, Brooklyn 11225"
+        format = "8-Team Double Elimination"
+        teammates = "Teams of 4 mandatory. If you and your teammates are signing up separately, make sure to put the same team name."
+        fee = "Entry Fee: $30/player"
     }
 
     return (

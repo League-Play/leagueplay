@@ -84,6 +84,11 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
             location = "Major R. Owens Center, 1561 Bedford Ave, Brooklyn 11225"
             time = "9:00-11:30 PM"
             time2 = "9:00pm"
+        } else if (tournament_id == "5" || tournament_id == 5) {
+            date = "March 18th, 2023";
+            location = "Major R. Owens Center, 1561 Bedford Ave, Brooklyn 11225"
+            time = "9:00-11:30 PM"
+            time2 = "9:00pm"
         }
 
         const text = `${formData.firstName} ${formData.lastName},\n
