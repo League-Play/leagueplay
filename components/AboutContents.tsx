@@ -66,7 +66,7 @@ const AboutContents: FunctionComponent = () => {
                             </div>
                             <div className="flex-grow">
                                 <h2 className="text-gray-900 title-font font-medium">
-                                    Eric Ming
+                                    Daniel Khaitov
                                 </h2>
                                 <p className="text-gray-500">Founder</p>
                             </div>
